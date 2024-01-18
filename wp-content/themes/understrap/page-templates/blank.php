@@ -25,8 +25,8 @@ defined( 'ABSPATH' ) || exit;
     <!-- 4.1. Вывести последние объекты недвижимости -->
     <?php
     $args_realty = array(
-        'post_type'      => 'reality', // Тип поста объекта недвижимости
-        'posts_per_page' => 5,         // Количество отображаемых объектов
+        'post_type'      => 'reality', 
+        'posts_per_page' => 5,       
         'order'          => 'DESC',
     );
     
@@ -64,8 +64,8 @@ defined( 'ABSPATH' ) || exit;
     
     <?php
 	$args_cities = array(
-		'post_type'      => 'city', // Тип поста города
-		'posts_per_page' => 5,       // Количество отображаемых городов
+		'post_type'      => 'city',
+		'posts_per_page' => 5,     
 		'order'          => 'DESC',
 	);
 
@@ -110,9 +110,7 @@ defined( 'ABSPATH' ) || exit;
             </div>
         </div>
 </div>
-    <!-- Другие основные поля формы -->
 
-    <!-- Поля ACF -->
     <label for="title">Название объекта:</label>
     <input type="text" name="title" id="title" required>
 
@@ -131,16 +129,12 @@ defined( 'ABSPATH' ) || exit;
     <label for="floor">Этаж:</label>
     <input type="text" name="floor" id="floor" required>
 
-    <!-- Добавьте другие поля ACF, если необходимо -->
-
-    <!-- Поле для nonce-защиты -->
     <?php wp_nonce_field('realty_nonce', 'realty_nonce'); ?>
 
     <input type="hidden" name="action" value="add_realty">
 
     <button type="submit">Добавить</button>
 </form>
-		<!-- JavaScript -->
 <script>
     jQuery(document).ready(function($) {
     $('#submit-btn').on('click', function() {
@@ -153,7 +147,6 @@ defined( 'ABSPATH' ) || exit;
             success: function(response) {
                 console.log(response);
 
-                // Отображение уведомления на странице
                 if (response.success) {
                     $('#notification .toast-body').text(response.message);
                     $('#notification').slideDown();
@@ -168,7 +161,6 @@ defined( 'ABSPATH' ) || exit;
         });
     });
 
-    // Закрытие уведомления
     $('#close-notification').on('click', function() {
         $('#notification').slideUp();
     });

@@ -26,16 +26,14 @@ $container = get_theme_mod( 'understrap_container_type' );
 		<div class="row">
 
 			<?php
-			// Получаем город из текущей страницы
 			$city_slug = get_query_var('city');
 
-			// Аргументы для запроса к базе данных
 			$args = array(
-				'post_type' => 'reality', // Замените 'reality' на тип вашего поста
+				'post_type' => 'reality', 
 				'posts_per_page' => -1,
 				'meta_query' => array(
 					array(
-						'key' => 'city', // Замените 'city' на название поля мета, где хранится информация о городе
+						'key' => 'city',
 						'value' => $city_slug,
 						'compare' => '=',
 					),
@@ -45,11 +43,9 @@ $container = get_theme_mod( 'understrap_container_type' );
 			// Создаем запрос
 			$realty_query = new WP_Query($args);
 
-			// Проверяем, есть ли записи
 			if ($realty_query->have_posts()) :
 				while ($realty_query->have_posts()) : $realty_query->the_post();
-					// Здесь ваш код для вывода каждой записи
-					the_title(); // Пример вывода заголовка
+					the_title();
 				endwhile;
 				wp_reset_postdata();
 			else :
